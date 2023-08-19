@@ -41,21 +41,27 @@ public class NotificationListenerservice extends NotificationListenerService {
 
             String from = bundle.getString("android.title");
             String message = bundle.getString("android.text");
+            Log.d("notification_class_recieved",from+" before "+message);
 
-            if(!(from.equals("WhatsApp")||from.contains(":")||message.contains("messages")||msgCount>1)){
-                Log.d("notification_class_recieved",from+" "+message);
-                Intent intent=new Intent("com.example.happygps");
-                intent.putExtra("from",from);
-                intent.putExtra("message",message);
+            try {
+                if(!(from.contains("WhatsApp")||from.contains(":")||message.contains("messages")||msgCount>1)){
+                    Log.d("notification_class_recieved",from+" after "+message);
+                    Intent intent=new Intent("com.example.happygps");
+                    intent.putExtra("from",from);
+                    intent.putExtra("message",message);
 
-                sendBroadcast(intent);
-                msgCount+=1;
-                try {
-                    handler.postDelayed(() -> msgCount=1, 2000);
-                }catch (Exception e){
-                    Log.d("handle_timer",String.valueOf(e));
+                    sendBroadcast(intent);
+                    msgCount+=1;
+                    try {
+                        handler.postDelayed(() -> msgCount=1, 2000);
+                    }catch (Exception e){
+                        Log.d("handle_timer",String.valueOf(e));
+                    }
                 }
+            }catch (Exception e){
+                Log.d("notification_class_recieved_Exception",String.valueOf(e));
             }
+
         }
     }
     @Override
