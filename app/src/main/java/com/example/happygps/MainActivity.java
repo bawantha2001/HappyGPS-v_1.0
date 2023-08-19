@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity{
     View coordinatorLayout;
     private AdView adView_bottom;
     Intent serviceIntent;
-    LocationListener locationListener;
     LocationManager locationManager;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -226,44 +225,25 @@ public class MainActivity extends AppCompatActivity{
 
     private void locationProviderEnabled(){
         locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
-        locationListener=new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-                LocationListener.super.onStatusChanged(provider, status, extras);
-            }
-
-            @Override
-            public void onProviderDisabled(@NonNull String provider) {
-                try {
-                    if(forgroundServiceRunning()){
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-                        alertDialogBuilder.setTitle("Turn ON Location");
-                        alertDialogBuilder.setMessage("Seems like the device location is turned OFF. In order for the app to work properly, location must be turned ON");
-                        alertDialogBuilder.setCancelable(false);
-                        alertDialogBuilder.setPositiveButton("I Will Do That", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-                    }
-                }catch (Exception e){
-                    Log.d("onProviderChange",String.valueOf(e));
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            try {
+                if(forgroundServiceRunning()){
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertDialogBuilder.setTitle("Turn ON Location");
+                    alertDialogBuilder.setMessage("Seems like the device location is turned OFF. In order for the app to work properly, location must be turned ON");
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.setPositiveButton("I Will Do That", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
                 }
+            }catch (Exception e){
+                Log.d("onProviderChange",String.valueOf(e));
             }
-        };
-        try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    500, (float) 0.01, locationListener);
-        } catch (SecurityException e) {
-            e.printStackTrace();
         }
     }
 

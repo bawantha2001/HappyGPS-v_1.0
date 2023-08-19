@@ -44,12 +44,12 @@ public class foreground_Activity extends Service {
     double longitude;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        readMessages();
-        startLocationUpdates();
         imagebrc = new ReciverBroadcastReceiver();
         IntentFilter intentFilter=new IntentFilter();
         intentFilter.addAction("com.example.happygps");
         registerReceiver(imagebrc,intentFilter);
+        readMessages();
+        startLocationUpdates();
 
         final String CHANNELID="Foreground Service ID";
         NotificationChannel channel= null;
@@ -74,7 +74,9 @@ public class foreground_Activity extends Service {
     @Override
     public void onDestroy() {
         try {
+            unregisterReceiver(imagebrc);
             locationManager.removeUpdates(locationListener);
+            Log.d("serviceStatus","stoped");
         }catch (Exception e){
             Log.d("serviceStatus",String.valueOf(e));
         }
@@ -224,7 +226,7 @@ public class foreground_Activity extends Service {
 
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    500, (float) 0.01, locationListener);
+                    5000,1,locationListener);
         } catch (SecurityException e) {
             e.printStackTrace();
         }
