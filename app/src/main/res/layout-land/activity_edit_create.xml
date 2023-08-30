@@ -23,79 +23,81 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"></com.google.android.gms.ads.AdView>
 
-    <EditText
-        android:id="@+id/txt_msg"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:ems="10"
-        android:hint="Message received"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textColorHighlight="#1CB99A"
-        android:textColorHint="#9CA7B8"
-        android:textColorLink="#1CB99A"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/chk_batteryLevel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Send battery level"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_msg" />
-
-    <CheckBox
-        android:id="@+id/chk_signalLevel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Send network quality"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chk_batteryLevel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:paddingLeft="180dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chk_signalLevel"
-        app:layout_constraintVertical_bias="1.0">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/btn_done"
-            android:layout_width="115dp"
-            android:layout_height="53dp"
-            android:layout_marginLeft="20dp"
-            android:backgroundTint="#1CB99A"
-            android:text="DONE"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/txt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:ems="10"
+                android:hint="Message received"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="#1CB99A"
+                android:textColorHint="#9CA7B8"
+                android:textColorLink="#1CB99A"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="115dp"
-            android:layout_height="53dp"
-            android:layout_marginLeft="30dp"
-            android:backgroundTint="#EF1101"
-            android:text="DELETE"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/chk_batteryLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Send battery level"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/chk_signalLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send network quality"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_done"
+                    android:layout_width="115dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#1CB99A"
+                    android:gravity="center"
+                    android:text="DONE"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    android:layout_width="115dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:backgroundTint="#EF1101"
+                    android:text="DELETE"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

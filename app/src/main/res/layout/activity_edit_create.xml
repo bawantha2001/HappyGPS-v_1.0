@@ -31,6 +31,7 @@
         android:ems="10"
         android:hint="Message received"
         android:inputType="text"
+        android:minHeight="48dp"
         android:textColor="@color/black"
         android:textColorHighlight="#1CB99A"
         android:textColorHint="#9CA7B8"
@@ -60,17 +61,15 @@
         android:text="Send network quality"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chk_batteryLevel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/chk_batteryLevel" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingTop="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,8 +80,9 @@
             android:id="@+id/btn_done"
             android:layout_width="115dp"
             android:layout_height="53dp"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
             android:backgroundTint="#1CB99A"
+            android:gravity="center"
             android:text="DONE"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -91,6 +91,7 @@
             android:id="@+id/btn_delete"
             android:layout_width="115dp"
             android:layout_height="53dp"
+            android:layout_gravity="center"
             android:layout_marginLeft="30dp"
             android:backgroundTint="#EF1101"
             android:text="DELETE"

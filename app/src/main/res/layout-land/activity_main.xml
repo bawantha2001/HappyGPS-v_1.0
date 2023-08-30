@@ -5,6 +5,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="bottom"
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
@@ -45,12 +46,15 @@
 
         <Button
             android:id="@+id/button_Creat"
-            android:layout_width="135dp"
-            android:layout_height="53dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:backgroundTint="@color/design_default_color_primary_dark"
-            android:text="+   CREATE"
+            android:text=" CREATE"
             android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:icon="@drawable/add"
+            app:iconSize="35dp" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView_bottom"
@@ -83,6 +87,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="@+id/listView_msg"
@@ -91,9 +96,8 @@
 
         <TextView
             android:id="@+id/txt_nolo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
             android:gravity="center"
             android:text="No location triggers."
             android:textColor="#958D8D"

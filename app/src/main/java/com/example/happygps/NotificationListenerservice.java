@@ -31,37 +31,38 @@ public class NotificationListenerservice extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        if (!sbn.getPackageName().equals(WA_PACKAGE)) {
-            Log.d("SBN Package","Package cannot found");
-        }
 
-        else{
+        if (sbn.getPackageName().equals(WA_PACKAGE)) {
             Notification notification = sbn.getNotification();
             Bundle bundle = notification.extras;
-
             String from = bundle.getString("android.title");
             String message = bundle.getString("android.text");
+
             Log.d("notification_class_recieved",from+" before "+message);
 
             try {
                 if(!(from.contains("WhatsApp")||from.contains(":")||message.contains("messages")||msgCount>1)){
-                    Log.d("notification_class_recieved",from+" after "+message);
+                    Log.d("notification_class_recieved",from+" after "+message+" key:- "+sbn.getKey());
                     Intent intent=new Intent("com.example.happygps");
                     intent.putExtra("from",from);
                     intent.putExtra("message",message);
-
                     sendBroadcast(intent);
                     msgCount+=1;
+
                     try {
                         handler.postDelayed(() -> msgCount=1, 2000);
                     }catch (Exception e){
                         Log.d("handle_timer",String.valueOf(e));
                     }
+
                 }
             }catch (Exception e){
                 Log.d("notification_class_recieved_Exception",String.valueOf(e));
             }
+        }
 
+        else{
+            Log.d("SBN Package","Package cannot found");
         }
     }
     @Override

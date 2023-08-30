@@ -13,12 +13,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.provider.ContactsContract;
 import android.telephony.SignalStrength;
@@ -33,6 +36,7 @@ import java.util.ArrayList;
 
 public class foreground_Activity extends Service {
 
+    NotificationListenerservice notificationListenerservice;
     ReciverBroadcastReceiver imagebrc;
     ArrayList<String> messageItemList = new ArrayList<>();
     ArrayList<String>signalItemList=new ArrayList<>();
@@ -226,7 +230,7 @@ public class foreground_Activity extends Service {
 
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    5000,1,locationListener);
+                    1000,(float)0.01,locationListener);
         } catch (SecurityException e) {
             e.printStackTrace();
         }
@@ -275,5 +279,6 @@ public class foreground_Activity extends Service {
             }
         }
     }
+
 
 }
