@@ -46,6 +46,7 @@ public class foreground_Activity extends Service {
     android.location.LocationListener locationListener;
     double latitude;
     double longitude;
+    boolean isGPSEnabled;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         imagebrc = new ReciverBroadcastReceiver();
@@ -103,7 +104,7 @@ public class foreground_Activity extends Service {
 
             for(int x=0;x<messageItemList.size();x++){
                 if(message_text.equals(messageItemList.get(x))){
-                    if(latitude!=0 && longitude!=0){
+                    if(isGPSEnabled){
                         if(batteryItemList.get(x).equals("true") && signalItemList.get(x).equals("true")){
                             int batLevel = batteryLevel();
                             String signalLevel=signalStatus();
@@ -211,6 +212,7 @@ public class foreground_Activity extends Service {
             public void onLocationChanged(@NonNull Location location) {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                isGPSEnabled=true;
                 Log.e("Locationlongi",String.valueOf(longitude));
             }
             public void onStatusChanged(@NonNull String provider, int status, Bundle extras) {
@@ -222,14 +224,13 @@ public class foreground_Activity extends Service {
 
 
             public void onProviderDisabled(@NonNull String provider) {
-                longitude=0.0;
-                latitude=0.0;
+                isGPSEnabled=false;
                 Log.e("Locationlongi",String.valueOf(longitude));
             }
         };
 
         try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
                     1000,(float)0.01,locationListener);
         } catch (SecurityException e) {
             e.printStackTrace();
