@@ -161,6 +161,7 @@ public class foreground_Activity extends Service {
                             break;
                         }
                     }
+
                     else {
                         String secure_msg="Happy GPS is unable to send the location because Location is turned OFF on the target device.\n\nSent by Happy GPS!";
 
