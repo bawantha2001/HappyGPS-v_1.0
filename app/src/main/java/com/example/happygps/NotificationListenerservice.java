@@ -46,7 +46,9 @@ public class NotificationListenerservice extends NotificationListenerService {
                     Intent intent=new Intent("com.example.happygps");
                     intent.putExtra("from",from);
                     intent.putExtra("message",message);
+
                     sendBroadcast(intent);
+                    cancelNotification(sbn.getKey());
                     msgCount+=1;
 
                     try {
