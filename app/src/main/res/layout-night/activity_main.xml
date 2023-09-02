@@ -14,9 +14,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#1CB99A"
-        android:gravity="left"
+        android:gravity="center_horizontal|left"
         android:orientation="horizontal"
-        android:paddingLeft="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:gravity="center_vertical"
+            android:paddingLeft="30dp"
             android:text="WhatsApp Triggers"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -38,7 +38,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#1CB99A"
-        android:gravity="left"
+        android:gravity="center_horizontal|left|center_vertical"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,11 +51,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/design_default_color_primary_dark"
-            android:text=" CREATE"
+            android:text="CREATE"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:icon="@drawable/add"
-            app:iconSize="35dp" />
+            app:iconSize="35dp"
+            app:iconTint="@color/white" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView_bottom"
@@ -105,8 +106,7 @@
             android:text="No location triggers."
             android:textColor="#958D8D"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="invisible" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
