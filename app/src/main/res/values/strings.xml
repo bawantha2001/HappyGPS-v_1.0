@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Happy GPS</string>
+    <string name="message_received">Message received</string>
+    <string name="send_network_quality">Send network quality</string>
+    <string name="send_battery_level">Send battery level</string>
+    <string name="done">DONE</string>
+    <string name="no_location_triggers">No location triggers.</string>
+    <string name="whatsapp_triggers">WhatsApp Triggers</string>
 </resources>

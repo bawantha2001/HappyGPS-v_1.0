@@ -44,7 +44,7 @@
                 android:layout_marginTop="100dp"
                 android:background="@drawable/edit_text"
                 android:ems="10"
-                android:hint="Message received"
+                android:hint="@string/message_received"
                 android:inputType="text"
                 android:minHeight="48dp"
                 android:padding="10dp"
@@ -52,24 +52,28 @@
                 android:textColorHighlight="#1CB99A"
                 android:textColorHint="#9CA7B8"
                 android:textColorLink="#1CB99A"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:autofillHints=""
+                tools:ignore="VisualLintTextFieldSize" />
 
             <CheckBox
                 android:id="@+id/chk_batteryLevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Send battery level"
+                android:text="@string/send_battery_level"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <CheckBox
                 android:id="@+id/chk_signalLevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Send network quality"
+                android:text="@string/send_network_quality"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -83,7 +87,7 @@
                     android:layout_width="115dp"
                     android:layout_height="53dp"
                     android:backgroundTint="#1CB99A"
-                    android:text="DONE"
+                    android:text="@string/done"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
